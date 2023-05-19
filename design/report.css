@@ -1,0 +1,302 @@
+@font-face {
+	 font-family: Fira Sans;
+	 font-weight: 400;
+	 src: url(fonts/FiraSans-Regular.ttf);
+}
+ @font-face {
+	 font-family: Fira Sans;
+	 font-style: italic;
+	 font-weight: 400;
+	 src: url(fonts/FiraSans-Italic.ttf);
+}
+ @font-face {
+	 font-family: Fira Sans;
+	 font-weight: 300;
+	 src: url(fonts/FiraSans-Light.ttf);
+}
+ @font-face {
+	 font-family: Fira Sans;
+	 font-style: italic;
+	 font-weight: 300;
+	 src: url(fonts/FiraSans-LightItalic.ttf);
+}
+ @font-face {
+	 font-family: Fira Sans;
+	 font-weight: bold;
+	 src: url(fonts/FiraSans-Bold.ttf);
+}
+ @page {
+	 @top-left {
+		 background: #a4262c;
+		 content: counter(page);
+		 height: 1cm;
+		 color: #fff;
+		 text-align: center;
+		 width: 1cm;
+	}
+	 @top-center {
+		 background: #a4262c;
+		 content: '';
+		 display: block;
+		 height: 0.05cm;
+		 opacity: 0.5;
+		 width: 100%;
+	}
+	 @top-right {
+		 content: string(heading);
+		 font-size: 9pt;
+		 height: 1cm;
+		 vertical-align: middle;
+		 width: 100%;
+	}
+	 @bottom-right {
+		 content: string(copyright);
+		 font-size: 9pt;
+		 height: 1cm;
+		 vertical-align: middle;
+		 width: 100%;
+	}
+}
+ @page :blank {
+	 @top-left {
+		 background: none;
+		 content: '';
+	}
+	 @top-center {
+		 content: none;
+	}
+	 @top-right {
+		 content: none;
+	}
+	 @bottom-right {
+		 content: none;
+	}
+}
+ @page no-chapter {
+	 @top-left {
+		 background: none;
+		 content: none;
+	}
+	 @top-center {
+		 content: none;
+	}
+	 @top-right {
+		 content: none;
+	}
+	 @bottom-right {
+		 content: none;
+	}
+}
+ @page chapter {
+	 margin: 0;
+	 padding: 0;
+	 @top-left {
+		 content: none;
+	}
+	 @top-center {
+		 content: none;
+	}
+	 @top-right {
+		 content: none;
+	}
+}
+ @page :first {
+	 background: url(cover.jpg) no-repeat center;
+	 background-size: cover;
+	 margin: 0;
+	 counter-reset: page -1;
+}
+ html {
+	 color: #393939;
+	 font-family: Fira Sans, helvetica, arial;
+	 font-size: 11pt;
+	 font-weight: 300;
+	 line-height: 1.5;
+}
+ html body article.chapter {
+	 align-items: center;
+	 display: flex;
+	 flex-direction: row;
+	 height: 297mm;
+	 justify-content: flex-end;
+	 page: chapter;
+}
+ html body article.chapter h1.section_title {
+	 background-color: #a4262c;
+	 padding: 1cm;
+	 margin: 0 auto;
+	 width: 60%;
+	 text-align: center;
+	 color: #fff;
+	 font-size: 30pt;
+}
+ html article#doc-cover h1#doc-title {
+	 color: #a4262c;
+	 font-size: 38pt;
+	 margin: 5cm 2cm 0 2cm;
+	 page: no-chapter;
+	 width: 100%;
+}
+ html body article#doc-cover {
+	 break-after: right;
+	 align-content: space-between;
+	 display: flex;
+	 flex-wrap: wrap;
+	 margin: 0;
+	 height: 297mm;
+}
+/*copyright*/
+ html body article#doc-cover address {
+	display: none;
+	/*background: #a4262c;
+	 flex: 1;
+	 color: #fff;
+	 margin: 0 -2cm;
+	 padding: 1cm 0;
+	 font-style: normal;
+	 white-space: pre-wrap; */
+}
+ html body article#doc-cover address:last-of-type {
+	 padding-right: 3cm;
+	 text-align: right;
+}
+ html body article#doc-cover address:first-of-type {
+	 padding-left: 3cm;
+}
+ html body article#doc-cover address p {
+	 margin: 0;
+	 padding: 0;
+}
+/*
+ html body article#doc-cover address p#copyright {
+	 string-set: copyright content();
+}*/
+ .html iframe, html img, .html svg {
+	 max-width: 100%;
+	 margin-top: 5px;
+}
+ html body h1 {
+	 color: #a4262c;
+	 string-set: heading content();
+}
+ html body h2, html body h3, html body h4 {
+	 color: black;
+	 font-weight: 400;
+}
+ html body h2 {
+	 font-size: 20pt;
+}
+ html body h3 {
+	 font-weight: 300;
+	 font-size: 15pt;
+}
+ html body h4 {
+	 font-size: 13pt;
+}
+ html body article {
+	 break-before: always;
+}
+ html body article video source::before {
+	 content: attr(src);
+}
+ html body article video[src]::before {
+	 content: attr(data-title) " " 'https://docs.pfb.brussels' attr(src);
+}
+ h2, h3, h4, h5 {
+	 margin-bottom: 0.1em;
+}
+ html body article a {
+	 color: #a4262c;
+	 text-decoration: none;
+}
+ html body article a.external-link::after {
+	 content: " (" attr(href) ")";
+	 font-style: italic;
+}
+ html body article table {
+	 border-spacing: 0;
+	 border-collapse: collapse;
+}
+ html body article table tr {
+	 border-bottom: 1px solid #888;
+}
+ html body article table tr td {
+	 padding: 4px 7px;
+}
+ html body article#contents {
+	 break-before: right;
+	 break-after: left;
+	 page: no-chapter;
+}
+ html body article#contents h2 {
+	 font-size: 20pt;
+	 font-weight: 400;
+	 margin-bottom: 3cm;
+}
+ html body article#contents h3 {
+	 font-weight: 500;
+	 margin: 3em 0 1em;
+}
+ html body article#contents h3::before {
+	 background: #a4262c;
+	 content: '';
+	 display: block;
+	 height: 0.08cm;
+	 margin-bottom: 0.25cm;
+	 width: 2cm;
+}
+ html body article#contents ul {
+	 list-style: none;
+	 padding-left: 0.5cm;
+}
+ html body article#contents ul li {
+	 border-top: 0.25pt solid #c1c1c1;
+	 margin: 0.15cm 0;
+	 padding-top: 0.15cm;
+}
+ html body article#contents ul li::before {
+	 color: #a4262c;
+	 content: '• ';
+	 font-size: 40pt;
+	 line-height: 16pt;
+	 vertical-align: bottom;
+}
+ html body article#contents ul li a {
+	 color: inherit;
+	 text-decoration: inherit;
+}
+ html body article#contents > ul {
+	 list-style: none;
+	 padding-left: 0;
+}
+ html body article#contents div h4 a::after, html body article#contents ul li a::after {
+	 color: #a4262c;
+	 content: target-counter(attr(href), page);
+	 float: right;
+}
+ html body article#contents div h4 {
+	 margin: 0.15cm 0;
+	 padding-top: 0;
+	 padding-bottom: 0;
+}
+ html body article#contents div h4 a {
+	 color: inherit;
+}
+ html body article p {
+	 text-align: justify;
+}
+ 
+html body pre {
+	white-space: pre-line;
+	padding: 10px;
+	background-color: #f5f5f5;
+}
+
+html body blockquote {
+	padding-left: 12px;
+	border-left: 0.2rem solid #00000052;
+}
+
+html body a.headerlink{
+	display: none;
+}
